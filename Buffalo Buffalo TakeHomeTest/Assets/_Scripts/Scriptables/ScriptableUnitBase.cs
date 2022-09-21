@@ -8,9 +8,6 @@ public abstract class ScriptableUnitBase : ScriptableObject
     
     [SerializeField] private Stats _stats;
     public Stats BaseStats => _stats;
-
-    // Used in game
-    public UnitBase Prefab;
     
     // Used in menus
     public string Description;

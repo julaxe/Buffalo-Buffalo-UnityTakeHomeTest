@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df6cf7bf4d414861a42315101e1e55df, type: 3}
+  m_Name: BrownEnemies_SpawnRate_-0.1_To_-0.3 1
+  m_EditorClassIdentifier: 
+  TargetType: 2
+  enemyScriptable: {fileID: 11400000, guid: b22ff938b16d5424e8ce894d229a4d83, type: 2}
+  enemyClass: 2
+  stats:
+    AttackPower: {x: 0, y: 0}
+    Health: {x: 0, y: 0}
+    Speed: {x: 0, y: 0}
+    SpawnRate: {x: -3, y: -1}

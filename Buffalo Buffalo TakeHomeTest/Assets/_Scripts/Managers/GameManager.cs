@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Scriptables;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -6,8 +7,16 @@ public class GameManager : StaticInstance<GameManager> {
     public static event Action<DayCycle> OnBeforeStateChanged;
     public static event Action<DayCycle> OnAfterStateChanged;
 
-    public DayCycle DayCycle { get; private set; }
 
+    //Day Cycle variables
+    public DayCycle DayCycle { get; private set; }
+    [SerializeField] private ScriptableDayCycleSettings morningSettings;
+    [SerializeField] private ScriptableDayCycleSettings afternoonSettings;
+    [SerializeField] private ScriptableDayCycleSettings nightSettings;
+    private ScriptableDayCycleSettings currentDayCycleSettings;
+
+
+    //Not necessary - just for testing purposes.
     [Range(0,1)]
     [SerializeField] private float timeScale;
 
@@ -22,7 +31,8 @@ public class GameManager : StaticInstance<GameManager> {
         Time.timeScale = timeScale;
     }
 
-    public void ChangeDayCycle(DayCycle newState) {
+    public void ChangeDayCycle(DayCycle newState) 
+    {
         OnBeforeStateChanged?.Invoke(newState);
 
         DayCycle = newState;
@@ -31,8 +41,10 @@ public class GameManager : StaticInstance<GameManager> {
                 HandleMorning();
                 break;
             case DayCycle.Afternoon:
+                HandleAfternoon();
                 break;
             case DayCycle.Night:
+                HandleNight();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -43,14 +55,21 @@ public class GameManager : StaticInstance<GameManager> {
         Debug.Log($"New state: {newState}");
     }
 
-    private void HandleMorning() {
-        // Do some start setup, could be environment, cinematics etc
-        
-        // Eventually call ChangeState again with your next state
-
-        //ChangeState(GameState.SpawningHeroes);
+    private void HandleMorning()
+    {
+        currentDayCycleSettings = morningSettings;
     }
-    
+    private void HandleAfternoon() 
+    {
+        currentDayCycleSettings = afternoonSettings;
+    }
+    private void HandleNight() 
+    {
+        currentDayCycleSettings = nightSettings;
+    }
+
+    public ScriptableDayCycleSettings GetDayCycleSettings() => currentDayCycleSettings;
+
 }
 
 [Serializable]

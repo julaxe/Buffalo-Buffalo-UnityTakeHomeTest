@@ -18,6 +18,6 @@ MonoBehaviour:
     Health: 2
     Speed: 1
     SpawnRate: 0.3
-  Prefab: {fileID: 3326988323622753949, guid: dcf7454609944d34db47cf12ec4391bb, type: 3}
   Description: 
-  Class: 0
+  Class: 1
+  Prefab: {fileID: 5805219261406526531, guid: dcf7454609944d34db47cf12ec4391bb, type: 3}
