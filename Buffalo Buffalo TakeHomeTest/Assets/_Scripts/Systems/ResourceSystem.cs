@@ -8,8 +8,8 @@ using UnityEngine;
 /// If you don't feel free to make this a standard class
 /// </summary>
 public class ResourceSystem : StaticInstance<ResourceSystem> {
-    public List<ScriptableExampleHero> ExampleHeroes { get; private set; }
-    private Dictionary<ExampleHeroType, ScriptableExampleHero> _ExampleHeroesDict;
+    public List<ScriptableEnemy> Enemies { get; private set; }
+    private Dictionary<string, ScriptableEnemy> _ExampleHeroesDict;
 
     protected override void Awake() {
         base.Awake();
@@ -17,10 +17,10 @@ public class ResourceSystem : StaticInstance<ResourceSystem> {
     }
 
     private void AssembleResources() {
-         ExampleHeroes = Resources.LoadAll<ScriptableExampleHero>("ExampleHeroes").ToList();
-        _ExampleHeroesDict = ExampleHeroes.ToDictionary(r => r.HeroType, r => r);
+        Enemies = Resources.LoadAll<ScriptableEnemy>("Enemies").ToList();
+        _ExampleHeroesDict = Enemies.ToDictionary(r => r.Name, r => r);
     }
 
-    public ScriptableExampleHero GetExampleHero(ExampleHeroType t) => _ExampleHeroesDict[t];
-    public ScriptableExampleHero GetRandomHero() => ExampleHeroes[Random.Range(0, ExampleHeroes.Count)];
+    public ScriptableEnemy GetEnemy(string enemyName) => _ExampleHeroesDict[enemyName];
+    public ScriptableEnemy GetRandomHero() => Enemies[Random.Range(0, Enemies.Count)];
 }   

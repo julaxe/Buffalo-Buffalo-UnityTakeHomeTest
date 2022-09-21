@@ -2,18 +2,17 @@ using UnityEngine;
 
 public class UnitManager : StaticInstance<UnitManager> {
 
-    public void SpawnHeroes() {
-        SpawnUnit(ExampleHeroType.Tarodev, new Vector3(1, 0, 0));
+    public void SpawnRedEnemy()
+    {
+        SpawnUnit("RedEnemy", Vector3.zero);
     }
-
-    void SpawnUnit(ExampleHeroType t, Vector3 pos) {
-        var tarodevScriptable = ResourceSystem.Instance.GetExampleHero(t);
+    void SpawnUnit(string enemyName, Vector3 pos) {
+        var tarodevScriptable = ResourceSystem.Instance.GetEnemy(enemyName);
 
         var spawned = Instantiate(tarodevScriptable.Prefab, pos, Quaternion.identity,transform);
-
-        // Apply possible modifications here such as potion boosts, team synergies, etc
+        
+        //modifications
         var stats = tarodevScriptable.BaseStats;
-        stats.Health += 20;
 
         spawned.SetStats(stats);
     }

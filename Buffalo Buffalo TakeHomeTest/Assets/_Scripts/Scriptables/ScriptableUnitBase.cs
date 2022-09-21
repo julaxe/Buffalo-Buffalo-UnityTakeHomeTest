@@ -1,29 +1,25 @@
 using System;
 using UnityEngine;
 
-public abstract class ScriptableExampleUnitBase : ScriptableObject {
-    public Faction Faction;
+public abstract class ScriptableUnitBase : ScriptableObject
+{
 
+    public string Name;
+    
     [SerializeField] private Stats _stats;
     public Stats BaseStats => _stats;
 
     // Used in game
-    public HeroUnitBase Prefab;
+    public UnitBase Prefab;
     
     // Used in menus
     public string Description;
-    public Sprite MenuSprite;
 }
 
 [Serializable]
 public struct Stats {
-    public int Health;
     public int AttackPower;
-    public int TravelDistance;
-}
-
-[Serializable]
-public enum Faction {
-    Heroes = 0,
-    Enemies = 1
+    public int Health;
+    public int Speed;
+    public float SpawnRate;
 }
