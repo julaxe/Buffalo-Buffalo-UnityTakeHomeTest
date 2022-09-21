@@ -18,6 +18,6 @@ MonoBehaviour:
     Health: 1
     Speed: 1
     SpawnRate: 0.1
-  Description: 
+  Description: Boss?
   Class: 2
   Prefab: {fileID: 5805219261406526531, guid: 39ef25780fbafe04780809fc93a972a2, type: 3}

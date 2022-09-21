@@ -14,21 +14,12 @@ public class GameManager : StaticInstance<GameManager> {
     [SerializeField] private ScriptableDayCycleSettings afternoonSettings;
     [SerializeField] private ScriptableDayCycleSettings nightSettings;
     private ScriptableDayCycleSettings currentDayCycleSettings;
-
-
-    //Not necessary - just for testing purposes.
-    [Range(0,1)]
-    [SerializeField] private float timeScale;
+    
 
     // Kick the game off with the first state
     void Start()
     {
-        ChangeDayCycle((DayCycle)Random.Range(0,2));
-    }
-
-    private void Update()
-    {
-        Time.timeScale = timeScale;
+        ChangeDayCycle((DayCycle)Random.Range(0,3));
     }
 
     public void ChangeDayCycle(DayCycle newState) 

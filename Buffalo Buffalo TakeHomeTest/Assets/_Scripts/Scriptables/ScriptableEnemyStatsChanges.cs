@@ -9,7 +9,7 @@ using UnityEditor;
 
 namespace _Scripts.Scriptables
 {
-    [CreateAssetMenu(menuName = "Scriptable/Units/Enemy/StatsChanges")]
+    [CreateAssetMenu(menuName = "Scriptable/DayCycleSettings/Actions")]
     public class ScriptableEnemyStatsChanges : ScriptableObject
     {
          public EnemyTargetType TargetType;
