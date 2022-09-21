@@ -8,10 +8,18 @@ public class GameManager : StaticInstance<GameManager> {
 
     public DayCycle DayCycle { get; private set; }
 
+    [Range(0,1)]
+    [SerializeField] private float timeScale;
+
     // Kick the game off with the first state
     void Start()
     {
         ChangeDayCycle((DayCycle)Random.Range(0,2));
+    }
+
+    private void Update()
+    {
+        Time.timeScale = timeScale;
     }
 
     public void ChangeDayCycle(DayCycle newState) {
@@ -37,7 +45,7 @@ public class GameManager : StaticInstance<GameManager> {
 
     private void HandleMorning() {
         // Do some start setup, could be environment, cinematics etc
-        UnitManager.Instance.SpawnRedEnemy();
+        
         // Eventually call ChangeState again with your next state
 
         //ChangeState(GameState.SpawningHeroes);
